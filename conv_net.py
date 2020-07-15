@@ -12,13 +12,17 @@ class convNet(torch.nn.Module):
     
     super(convNet, self).__init__()
     
-    self.loss_fn =loss_fn
     self.conv1 = nn.Conv2d(1, 10, 5)
     self.hidden1 = nn.linear(320, 100) #put the pooled features through a hidden layer
     self.output = nn.linear(100, 10) #this layer classifies for us
 
     self.reLu = nn.ReLU()
     self.pool = nn.MaxPool2d(2,2)
+
+    
+    self.optimizer = optim.SGD(self.parameters(), lr=lrate, momentum=0.9)
+    self.loss_fn = nn.CrossEntropyLoss
+    
 
 
     def get_parameters(self):
@@ -42,7 +46,7 @@ class convNet(torch.nn.Module):
     outputs = self.forward(x)
 
     #get the loss and backpropagate it
-    loss = self.criterion(outputs, y)
+    loss = self.loss_fn(outputs, y)
     loss.backward()
 
     self.optimizer.step()
@@ -50,6 +54,6 @@ class convNet(torch.nn.Module):
 
     return L
 
-    def train(self, train_data, train_labels, learning_rate, no_epochs, momentum, log_interval):
+    def train(self, train_data, train_labels, dev_set, learning_rate, no_epochs, momentum, log_interval):
         return 0
 
