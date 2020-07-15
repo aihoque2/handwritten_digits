@@ -50,5 +50,6 @@ class convNet(torch.nn.Module):
 
     return L
 
-
+    def train(self, train_data, train_labels, learning_rate):
+        return 0
 
