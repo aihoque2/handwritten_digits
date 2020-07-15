@@ -9,5 +9,7 @@ y = torch.from_numpy(y).cuda()
 
 
 
+
+
 print('Dimensions: %s x %s' % (X.shape[0], X.shape[1]))
 print('\n1st row', X[0])
