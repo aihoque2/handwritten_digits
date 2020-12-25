@@ -9,21 +9,20 @@ import torch.optim as optim
 
 class convNet(torch.nn.Module):
     def __init__(self, lrate, in_size, out_size, momentum):
-    
-    super(convNet, self).__init__()
+        super(convNet, self).__init__()
 
-    #you need the layers, the loss function, and the optimizer
+        #you need the layers, the loss function, and the optimizer
     
-    self.conv1 = nn.Conv2d(1, 10, 5)
-    self.hidden1 = nn.linear(320, 100) #put the pooled features through a hidden layer
-    self.output = nn.linear(100, out_size) #this layer classifies for us
+        self.conv1 = nn.Conv2d(1, 10, 5)
+        self.hidden1 = nn.linear(320, 100) #put the pooled features through a hidden layer
+        self.output = nn.linear(100, out_size) #this layer classifies for us
 
-    self.reLu = nn.ReLU()
-    self.pool = nn.MaxPool2d(2,2)
+        self.reLu = nn.ReLU()
+        self.pool = nn.MaxPool2d(2,2)
 
     
-    self.optimizer = optim.SGD(self.parameters(), lr=lrate, momentum=momentum)
-    self.loss_fn = nn.CrossEntropyLoss
+        self.optimizer = optim.SGD(self.parameters(), lr=lrate, momentum=momentum)
+        self.loss_fn = nn.CrossEntropyLoss
     
 
 
