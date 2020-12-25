@@ -1,5 +1,6 @@
 from mlxtend.data import loadlocal_mnist
 import torch
+from conv_net import convNet
 
 X, y = loadlocal_mnist(images_path = '/home/ahoque245/projects/AI/handwritten_digits/data/train/train-images-idx3-ubyte',
  labels_path='/home/ahoque245/projects/AI/handwritten_digits/data/train/train-labels-idx1-ubyte')

@@ -11,6 +11,8 @@ class convNet(torch.nn.Module):
     def __init__(self, lrate, in_size, out_size, momentum):
     
     super(convNet, self).__init__()
+
+    #you need the layers, the loss function, and the optimizer
     
     self.conv1 = nn.Conv2d(1, 10, 5)
     self.hidden1 = nn.linear(320, 100) #put the pooled features through a hidden layer
@@ -71,14 +73,15 @@ class convNet(torch.nn.Module):
         model = convNet(lrate=learning_rate, in_size=784, out_size=10, momentum=momentum)
 
 
-        for k in no_epochs:
-            curr_loss = 0.0
 
-            for i in range(no_iter):
-                start_idx = i * batch_size
-                x = train_set.narrow(0, start_idx, batch_size)
-                y = train_set.narrow(0, start_idx, batch_size)
-    
+        for i in range(no_iter):
+            start_idx = i * batch_size
+
+            if (start_idx >= len(train_set)):
+                start_idx = start_idx - len(train_set) #get the proper index
+
+            x = train_set.narrow(0, start_idx, batch_size)
+            y = train_set.narrow(0, start_idx, batch_size)
             curr_loss = model.step(x, y)
 
 
