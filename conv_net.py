@@ -14,8 +14,8 @@ class convNet(torch.nn.Module):
         #you need the layers, the loss function, and the optimizer
     
         self.conv1 = nn.Conv2d(1, 10, 5)
-        self.hidden1 = nn.linear(320, 100) #put the pooled features through a hidden layer
-        self.output = nn.linear(100, out_size) #this layer classifies for us
+        self.hidden1 = nn.linear(10*12*12, 300) #put the pooled features through a hidden layer
+        self.output = nn.linear(300, out_size) #this layer classifies for us
 
         self.reLu = nn.ReLU()
         self.pool = nn.MaxPool2d(2,2)
