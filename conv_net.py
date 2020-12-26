@@ -22,7 +22,7 @@ class convNet(torch.nn.Module):
 
     
         self.optimizer = optim.SGD(self.parameters(), lr=lrate, momentum=momentum)
-        self.loss_fn = nn.CrossEntropyLoss
+        self.loss_fn = nn.CrossEntropyLoss()
     
 
 
