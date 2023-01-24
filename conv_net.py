@@ -7,7 +7,7 @@ import torch.optim as optim
 
 
 
-class convNet(torch.nn.Module):
+class ConvNet(torch.nn.Module):
     def __init__(self, lrate, in_size, out_size, momentum):
         super(convNet, self).__init__()
 
